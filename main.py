@@ -18,12 +18,15 @@ client = commands.Bot(command_prefix = config.get("prefix"), intents=intents)
 
 #Load commmands and events
 async def load():
-    for filename in os.listdir("./cogs"):
-        if filename.endswith(".py"):
-            await client.load_extension(f"cogs.{filename[: -3]}")
+    for folder in os.listdir("./cogs"):
+        for filename in os.listdir(f"./cogs/{folder}"):
+            if filename.endswith(".py"):
+                print(f"Loaded {filename}")
+                await client.load_extension(f"cogs.{folder}.{filename[: -3]}")
 
 async def main():
     await load()
     await client.start(os.getenv("TOKEN"))
 
 asyncio.run(main())
+
