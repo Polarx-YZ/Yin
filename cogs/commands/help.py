@@ -9,7 +9,12 @@ class help(commands.Cog):
       
     @commands.command()
     async def help(self, ctx):
-        helpEmbed = discord.Embed(title=f"{settings.config.get("botName")} | Help")
+        
+        helpEmbed = discord.Embed(
+            title=f"{settings.config.get('botName')} | Help", 
+            description=f"A bot made by people who have no idea what they are doing. \nJoin the [Support Server!](https://discord.gg/xHB5XUMhbu)",
+            )
+        helpEmbed.set_footer(text= f"Made by {', '.join(settings.config.get('devs'))}")
         await ctx.reply(embed=helpEmbed)
         
 async def setup(bot):
