@@ -9,6 +9,5 @@ class ready(commands.Cog):
     async def on_ready(self):
         print("Bot is ready!")
         
-        
 async def setup(bot):
     await bot.add_cog(ready(bot))
