@@ -1,5 +1,6 @@
 {
 	"botName": "Yin",
+    "version": "1.0.0",
 	"botOwner": "rin5931",
 	"devs": ["rin5931", "zephyrcoolman", "alaminthehouse", "fityoshiboy23"],
 	"prefix": ".",
