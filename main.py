@@ -25,5 +25,6 @@ async def main():
     await load()
     await client.start(os.getenv("TOKEN"))
 
+
 asyncio.run(main())
 
