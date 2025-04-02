@@ -8,9 +8,20 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def help(self, ctx):
+    @commands.command(brief="Get help!", description="Get help for commands", usage=f"{settings.config.get("prefix")}help `[Optional: command]`")
+    async def help(self, ctx, arg=None):
 
+        if arg != None:
+            command = self.bot.get_command(arg)
+            if command != None:
+                embed = discord.Embed(
+                    title=f"Help | {command.name}",
+                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {command.usage}"
+                )
+                return await ctx.reply(embed=embed)
+            return await ctx.reply(f"`{arg}` is not a valid command!")
+
+        # Send default help message if no arguements are provided
         devs = ', '.join(settings.config.get('devs'))
         support_server = settings.config.get("supportServer")
 
@@ -20,10 +31,6 @@ class Help(commands.Cog):
         )
         helpEmbed.set_footer(text=f"Made by {devs}")
         await ctx.reply(embed=helpEmbed)
-        
-    @commands.command()
-    async def help(self,ctx, args):
-        await ctx.reply("test")
 
 
 async def setup(bot):
