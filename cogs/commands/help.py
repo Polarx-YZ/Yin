@@ -16,7 +16,7 @@ class Help(commands.Cog):
             if command != None:
                 embed = discord.Embed(
                     title=f"Help | {command.name}",
-                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {command.usage}"
+                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {command.usage}\n\nAliases: {", ".join(command.aliases)}"
                 )
                 return await ctx.reply(embed=embed)
             return await ctx.reply(f"`{arg}` is not a valid command!")
