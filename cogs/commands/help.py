@@ -4,7 +4,7 @@ import settings
 settings.init()
 
 
-class help(commands.Cog):
+class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -20,7 +20,11 @@ class help(commands.Cog):
         )
         helpEmbed.set_footer(text=f"Made by {devs}")
         await ctx.reply(embed=helpEmbed)
+        
+    @commands.command()
+    async def help(self,ctx, args):
+        await ctx.reply("test")
 
 
 async def setup(bot):
-    await bot.add_cog(help(bot))
+    await bot.add_cog(Help(bot))

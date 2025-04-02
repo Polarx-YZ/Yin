@@ -2,7 +2,7 @@ import discord
 import random
 from discord.ext import commands
 
-class dice(commands.Cog):
+class Dice(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
@@ -17,4 +17,4 @@ class dice(commands.Cog):
             await ctx.reply("You need to specify the amount of sides!")
         
 async def setup(bot):
-    await bot.add_cog(dice(bot))
+    await bot.add_cog(Dice(bot))

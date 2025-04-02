@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class commands(commands.Cog):
+class Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
       
@@ -14,4 +14,4 @@ class commands(commands.Cog):
         await ctx.reply(helptext)
         
 async def setup(bot):
-    await bot.add_cog(commands(bot))
+    await bot.add_cog(Commands(bot))

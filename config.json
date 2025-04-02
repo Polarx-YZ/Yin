@@ -3,5 +3,11 @@
     "botOwner": "rin5931",
     "devs": ["rin5931", "zephyrcoolman", "alaminthehouse", "fityoshiboy23"],
     "prefix": "!",
-    "supportServer": "https://discord.gg/xHB5XUMhbu"
+    "supportServer": "https://discord.gg/xHB5XUMhbu",
+    "guild": {
+        "welcomeMessage": false,
+        "welcomeChannel": 1356107677528358952,
+        "departureMessage": false,
+        "departureChannel": 1356107696633417758
+    }
 }

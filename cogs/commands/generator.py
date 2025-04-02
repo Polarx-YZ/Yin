@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import re
 
-class generator(commands.Cog):
+class Generator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
       
@@ -25,4 +25,4 @@ class generator(commands.Cog):
         await ctx.reply(message)
         
 async def setup(bot):
-    await bot.add_cog(generator(bot))
+    await bot.add_cog(Generator(bot))
