@@ -4,7 +4,7 @@
 	"botOwner": "rin5931",
 	"devs": ["rin5931", "zephyrcoolman", "alaminthehouse", "fityoshiboy23"],
 	"prefix": "yoshi",
-	"testPrefix": "!",
+	"testPrefix": "ytest",
 	"supportServer": "https://discord.gg/xHB5XUMhbu",
 	"testID": 930661077237264404,
 	"guild": {
