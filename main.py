@@ -8,8 +8,7 @@ settings.init()
 
 load_dotenv()
 
-intents = discord.Intents.default()
-intents.message_content = True
+intents = discord.Intents.all()
 
 client = commands.Bot(command_prefix=settings.config.get(
     "prefix"), intents=intents, help_command=None)

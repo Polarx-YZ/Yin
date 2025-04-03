@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
-import settings
-settings.init()
+from settings import config
 
 class Ready(commands.Cog):
     def __init__(self, bot):
@@ -13,8 +12,8 @@ class Ready(commands.Cog):
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(self.bot.guilds)} guilds"))
 
         # If the bot is the test bot then use the test prefix
-        if (self.bot.user.id == settings.config.get("testID")):
-            self.bot.command_prefix = settings.config.get("testPrefix")
+        if (self.bot.user.id == config.get("testID")):
+            self.bot.command_prefix = config.get("testPrefix")
 
 
 async def setup(bot):

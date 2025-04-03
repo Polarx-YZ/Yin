@@ -1,14 +1,13 @@
 import discord
 from discord.ext import commands
-import settings
-settings.init()
+from settings import config
 
 
 class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="Get help!", description="Get help for commands", usage=f"{settings.config.get("prefix")}help `[Optional: command]`")
+    @commands.command(brief="Get help!", description="Get help for commands", usage=f"{config.get("prefix")}help `[Optional: command]`")
     async def help(self, ctx, arg=None):
 
         if arg != None:
@@ -22,11 +21,11 @@ class Help(commands.Cog):
             return await ctx.reply(f"`{arg}` is not a valid command!")
 
         # Send default help message if no arguements are provided
-        devs = ', '.join(settings.config.get('devs'))
-        support_server = settings.config.get("supportServer")
+        devs = ', '.join(config.get('devs'))
+        support_server = config.get("supportServer")
 
         helpEmbed = discord.Embed(
-            title=f"{settings.config.get('botName')} | Help",
+            title=f"{config.get('botName')} | Help",
             description=f"A bot made by people who have no idea what they are doing. \nJoin the [Support Server!]({support_server})",
         )
         helpEmbed.set_footer(text=f"Made by {devs}")
