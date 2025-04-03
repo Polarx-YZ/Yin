@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 
-class music(commands.Cog):
+class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -75,4 +75,4 @@ class music(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(music(bot))
+    await bot.add_cog(Music(bot))

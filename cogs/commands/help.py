@@ -1,21 +1,31 @@
 import discord
 from discord.ext import commands
-import settings
-settings.init()
+from settings import config
 
 
-class help(commands.Cog):
+class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def help(self, ctx):
+    @commands.command(brief="Get help!", description="Get help for commands", usage=f"{config.get("prefix")}help `[Optional: command]`")
+    async def help(self, ctx, arg=None):
 
-        devs = ', '.join(settings.config.get('devs'))
-        support_server = settings.config.get("supportServer")
+        if arg != None:
+            command = self.bot.get_command(arg)
+            if command != None:
+                embed = discord.Embed(
+                    title=f"Help | {command.name}",
+                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {command.usage}\n\nAliases: {", ".join(command.aliases)}"
+                )
+                return await ctx.reply(embed=embed)
+            return await ctx.reply(f"`{arg}` is not a valid command!")
+
+        # Send default help message if no arguements are provided
+        devs = ', '.join(config.get('devs'))
+        support_server = config.get("supportServer")
 
         helpEmbed = discord.Embed(
-            title=f"{settings.config.get('botName')} | Help",
+            title=f"{config.get('botName')} | Help",
             description=f"A bot made by people who have no idea what they are doing. \nJoin the [Support Server!]({support_server})",
         )
         helpEmbed.set_footer(text=f"Made by {devs}")
@@ -23,4 +33,4 @@ class help(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(help(bot))
+    await bot.add_cog(Help(bot))
