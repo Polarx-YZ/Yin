@@ -12,7 +12,12 @@ class music(commands.Cog):
         await ctx.reply("Command not yet implemented")
         
         # If there is no song playing and the queue is empty then play the song provided
-        
+        self.bot.lavalink_nodes = [
+            {"host": "lavalink.devz.cloud", "port": 443, "password": "mathiscool", "https": True},
+        ]
+
+
+
         # If there is a song already playing then add the song to the end of the queue
         
         # If no song is provided then let the user know
