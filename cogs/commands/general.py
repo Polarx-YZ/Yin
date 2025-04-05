@@ -17,7 +17,7 @@ class General(commands.Cog):
     async def ping(self, ctx):
         await ctx.reply(f"Pong! `{round(self.bot.latency * 1000) }ms`")
 
-    @commands.command(aliase=["commands"])
+    @commands.command(aliases=["commands"])
     async def commandlist(self, ctx):
         sorted_commands = sorted(list(self.bot.commands), key=lambda x: x.name)
 
