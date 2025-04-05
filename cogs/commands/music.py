@@ -54,7 +54,7 @@ class Music(commands.Cog):
         # Leave the voice channel but do NOT clear the queue
 
     @commands.command()
-    async def add(self, ctx):
+    async def add_song(self, ctx):
         await ctx.reply("Command not yet implemented")
         
         # add a song to the queue
