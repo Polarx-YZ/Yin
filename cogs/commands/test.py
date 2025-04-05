@@ -32,9 +32,13 @@ class Test(commands.Cog):
         
     @commands.command()
     async def sim_error(self, ctx):
-        print(ctx.author.id)
         if self.authorized_user(ctx.author.id):
             await ctx.reply()
-            
+    
+    @commands.command()
+    async def echo(self, ctx, *args):
+        if self.authorized_user(ctx.author.id):
+            await ctx.reply(" ".join(args))
+        
 async def setup(bot):
     await bot.add_cog(Test(bot))

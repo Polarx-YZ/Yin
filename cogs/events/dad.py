@@ -9,7 +9,7 @@ class Message(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, ctx):
-        if ctx.author.bot:
+        if ctx.author.bot or config["auto_responses"]["dad"] == False:
             return
 
         user = ctx.author
