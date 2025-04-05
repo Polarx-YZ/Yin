@@ -5,7 +5,6 @@ import discord
 from discord.ext import commands
 import settings
 settings.init()
-
 load_dotenv()
 
 intents = discord.Intents.all()

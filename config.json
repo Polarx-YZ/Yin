@@ -13,5 +13,9 @@
 		"welcome_channel": 1356107677528358952,
 		"departure_message": false,
 		"departure_channel": 1356107696633417758
+	},
+	"auto_responses": {
+		"dad": true,
+		"narration": true
 	}
 }
