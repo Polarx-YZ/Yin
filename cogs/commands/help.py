@@ -22,10 +22,10 @@ class Help(commands.Cog):
 
         # Send default help message if no arguements are provided
         devs = ', '.join(config.get('devs'))
-        support_server = config.get("supportServer")
+        support_server = config.get("support_server")
 
         helpEmbed = discord.Embed(
-            title=f"{config.get('botName')} | Help",
+            title=f"{config.get('bot_name')} | Help",
             description=f"A bot made by people who have no idea what they are doing. \nJoin the [Support Server!]({support_server})",
         )
         helpEmbed.set_footer(text=f"Made by {devs}")
