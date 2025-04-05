@@ -53,6 +53,23 @@ class General(commands.Cog):
         
         await ctx.reply(embed=embed)
 
+    @commands.command(aliases=["about", "whois"])
+    async def memberinfo(self, ctx, member: discord.Member=None):
+        if member == None:
+            member = ctx.author
+        
+        nickname = member.nick
+        creation_date = member.created_at.strftime("%a %#d %B %Y, %I:%M %p")
+        age = round((time() - member.created_at.timestamp()) / 31536000, 2) # in years
+        
+        embed = discord.Embed(
+            title=f"About {member}",
+            description=f"**Username**: {member}\n**Nickname**: {nickname}\n**Account Age**: {age} years\n**Creation Date**: {creation_date}"
+        )
+        
+        embed.set_image(url=member.avatar.url)
+        
+        await ctx.reply(embed=embed)
 
 async def setup(bot):
     await bot.add_cog(General(bot))
