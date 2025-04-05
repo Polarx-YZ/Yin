@@ -9,8 +9,8 @@ class Calculator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
       
-    @commands.command()
-    async def add(self, ctx, *args: int):
+    @commands.command(aliases=["sum"], brief="Add numbers", description="Add numbers together", usage="`Num1` `Num2` `etc...`")
+    async def add(self, ctx, *args: float):
         
         sum = args[0]
         
@@ -20,7 +20,7 @@ class Calculator(commands.Cog):
         await ctx.reply(str(sum))
         
     @commands.command()
-    async def subtract(self, ctx, *args: int):
+    async def subtract(self, ctx, *args: float):
         
         diff = args[0]
 
@@ -30,7 +30,7 @@ class Calculator(commands.Cog):
         await ctx.reply(str(diff))
     
     @commands.command()
-    async def multiply(self, ctx, *args: int):
+    async def multiply(self, ctx, *args: float):
         
         prod = args[0]
         
@@ -40,7 +40,7 @@ class Calculator(commands.Cog):
         await ctx.reply(str(prod))
     
     @commands.command()
-    async def divide(self, ctx, *args: int):
+    async def divide(self, ctx, *args: float):
         
         quot = args[0]
 
