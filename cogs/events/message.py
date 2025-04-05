@@ -14,17 +14,17 @@ class Message(commands.Cog):
 
         user = ctx.author
         dad_triggers = ["i'm", "am", "im"]
-
+        
         # Checks if any dad_triggers are in the message and stores the string that triggered it
         if (any(x for x in dad_triggers if x in ctx.content.lower())):
             for trigger in dad_triggers:
-                for index, word in enumerate(ctx.content.split(" ")):
+                for index, word in enumerate(ctx.content.lower().split(" ")):
                     if word == trigger:
                         words_after = ctx.content.split()[index + 1:]
                         return await ctx.reply(f"Hi {" ".join(words_after)}! I'm Dad!")
                     
         # Respond to 'shouting'
-        if (ctx.content.isupper()):
+        if ctx.content.isupper():
             return await ctx.reply(f"Hey {user.mention}, no yelling!")
         
         #! OLD CODE DOESN'T WORK AND IT'S WAY TOO COMPLICATED LOL - @Polarx-YZ
