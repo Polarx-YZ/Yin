@@ -15,7 +15,7 @@ class Help(commands.Cog):
             if command != None:
                 embed = discord.Embed(
                     title=f"Help | {command.name}",
-                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {command.usage}\n\nAliases: {", ".join(command.aliases)}"
+                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {self.bot.command_prefix}{command.usage}\n\nAliases: `{"`, `".join(command.aliases)}`"
                 )
                 return await ctx.reply(embed=embed)
             return await ctx.reply(f"`{arg}` is not a valid command!")
@@ -26,7 +26,7 @@ class Help(commands.Cog):
 
         helpEmbed = discord.Embed(
             title=f"{config.get('bot_name')} | Help",
-            description=f"A bot made by people who have no idea what they are doing. \nJoin the [Support Server!]({support_server})",
+            description=f"A bot made by people who have no idea what they are doing!! \n\nJoin the [Support Server!]({support_server})",
         )
         helpEmbed.set_footer(text=f"Made by {devs}")
         await ctx.reply(embed=helpEmbed)
