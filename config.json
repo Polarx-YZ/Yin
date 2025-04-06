@@ -2,9 +2,9 @@
     "bot_name": "Yin",
     "version": "1.0.0",
     "bot_owner": "rin5931",
-    "devs": ["rin5931", "zephyrcoolman", "alaminthehouse", "fityoshiboy23"],
-    "prefix": "%",
-    "test_prefix": "yoshi",
+    "devs": ["rin5931", "fityoshiboy23", "mudaip"],
+    "prefix": ".",
+    "test_prefix": "!",
     "support_server": "https://discord.gg/xHB5XUMhbu",
     "testID": 930661077237264404,
     "support_server_ID": 1356024606972055767,
@@ -18,9 +18,8 @@
         "dad": true,
         "narration": true
     },
-
-	"sender_email": "pythonsmtpdeveloper@gmail.com",
-	"reciever_email_1": "polarkun761@gmail.com",
-	"reciever_email_2": "notpolarpup@gmail.com"
-
+    "email": {
+        "sender_email": "pythonsmtpdeveloper@gmail.com",
+        "reciever_emails": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
+    }
 }
