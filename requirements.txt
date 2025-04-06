@@ -1,2 +1,5 @@
 discord.py
+discord.py[voice]
 python-dotenv
+wavelink
+PyNaCl
