@@ -20,6 +20,6 @@
     },
     "email": {
         "sender_email": "pythonsmtpdeveloper@gmail.com",
-        "reciever_emails": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
+        "reciever_email": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
     }
 }
