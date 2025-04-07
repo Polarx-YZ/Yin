@@ -4,18 +4,14 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 import os
-import json
+import settings
 
 #import common modules
 import discord
 from discord.ext import commands
 from settings import config
 
-
-# Load the config.json file
-with open("config.json", "r") as config_file:
-    config = json.load(config_file)
-
+settings.init()
 
 # Load environment variables from .env file
 load_dotenv(override=True)
@@ -45,7 +41,7 @@ class SendMail(commands.Cog):
     def send_email(self, msg):
         
         # Load the email configuration from the config.json file
-        email_config = config.get("email")
+        email_config = settings.config.get("email")
         sender_email = email_config.get("sender_email")
         reciever_email = email_config.get("reciever_email")
 
