@@ -1,16 +1,25 @@
 {
-	"botName": "Yin",
+    "bot_name": "Yin",
     "version": "1.0.0",
-	"botOwner": "rin5931",
-	"devs": ["rin5931", "zephyrcoolman", "alaminthehouse", "fityoshiboy23"],
-	"prefix": ".",
-	"testPrefix": "!",
-	"supportServer": "https://discord.gg/xHB5XUMhbu",
-	"testID": 930661077237264404,
-	"guild": {
-		"welcomeMessage": false,
-		"welcomeChannel": 1356107677528358952,
-		"departureMessage": false,
-		"departureChannel": 1356107696633417758
-	}
+    "bot_owner": "rin5931",
+    "devs": ["rin5931", "fityoshiboy23", "mudaip"],
+    "prefix": ".",
+    "test_prefix": "!",
+    "support_server": "https://discord.gg/xHB5XUMhbu",
+    "testID": 930661077237264404,
+    "support_server_ID": 1356024606972055767,
+    "guild": {
+        "welcome_message": false,
+        "welcome_channel": 1356107677528358952,
+        "departure_message": false,
+        "departure_channel": 1356107696633417758
+    },
+    "auto_responses": {
+        "dad": true,
+        "narration": true
+    },
+    "email": {
+        "sender_email": "pythonsmtpdeveloper@gmail.com",
+        "reciever_emails": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
+    }
 }

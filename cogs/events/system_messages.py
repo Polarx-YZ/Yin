@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
-import settings
-settings.init()
+from settings import config
 
 
 class SystemMessages(commands.Cog):
@@ -11,10 +10,10 @@ class SystemMessages(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
 
-        if settings.config.get("guild").get("welcomeMessage") == False:
+        if config.get("guild").get("welcome_message") == False:
             return
 
-        welcomeID = settings.config.get("guild").get("welcomeChannel")
+        welcomeID = config.get("guild").get("welcome_channel")
 
         channel = self.bot.get_channel(welcomeID)
 
@@ -27,10 +26,10 @@ class SystemMessages(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member: discord.Member):
 
-        if settings.config.get("guild").get("departureMessage") == False:
+        if config.get("guild").get("departure_message") == False:
             return
 
-        departureID = settings.config.get("guild").get("departureChannel")
+        departureID = config.get("guild").get("departure_channel")
 
         channel = self.bot.get_channel(departureID)
 
