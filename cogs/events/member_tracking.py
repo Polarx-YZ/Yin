@@ -1,6 +1,7 @@
 # import common modules
 import discord
 from discord.ext import commands
+from settings import config
 
 class MemberTracking(commands.Cog):
 
@@ -12,8 +13,11 @@ class MemberTracking(commands.Cog):
     @commands.Cog.listener()
     async def on_presence_update(self, before, after):
 
+        if config["tracking"]["enabled"] == False:
+            return
+        
         # Specify the role name to track
-        role_name = "Tracking"
+        role_name = config["tracking"]["role_name"]
 
         # Ensure the 'after' object is a Member instance and belongs to a guild
         if not isinstance(after, discord.Member) or not after.guild:
