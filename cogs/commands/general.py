@@ -30,7 +30,7 @@ class General(commands.Cog):
                 
             text += f"| {command.name} {brief}\n"
         text += "```"
-        text += f"\n`Total: {len(self.bot.commands)}`"
+        text += f"\n`Total: {len([x for x in self.bot.commands if not x.hidden])}`"
         await ctx.reply(text)
 
     @commands.command()
