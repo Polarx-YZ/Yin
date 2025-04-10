@@ -22,15 +22,20 @@ class General(commands.Cog):
         sorted_commands = sorted(list(self.bot.commands), key=lambda x: x.name)
 
         text = "```"
-        for command in sorted_commands:
-            text += f"{command.name}\n"
+        for command in [x for x in sorted_commands if not x.hidden]:
+            if command.brief:
+                brief = f"- {command.brief}"
+            else:
+                brief = ""
+                
+            text += f"| {command.name} {brief}\n"
         text += "```"
         text += f"\n`Total: {len(self.bot.commands)}`"
         await ctx.reply(text)
 
     @commands.command()
     async def botinfo(self, ctx):
-        total_commands = len(self.bot.commands)
+        total_commands = len([x for x in self.bot.commands if not x.hidden])
         total_servers = len(self.bot.guilds)
         total_members = 0
         uptime = str(datetime.timedelta(seconds=int(round(time()-self.start_time))))
