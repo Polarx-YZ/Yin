@@ -27,7 +27,7 @@ class Config(commands.Cog):
             await self.bot.config.upsert({"_id": ctx.guild.id, "autoresponse_narration": value})
             return await ctx.reply(f"Narration set to `{value}`")
         
-        
+    @commands.has_permissions(manage_guild=True)
     @commands.command(aliases=["settings"])
     async def config(self, ctx, setting=None, *args):
         
@@ -41,7 +41,6 @@ class Config(commands.Cog):
         server_config = await self.bot.config.find(ctx.guild.id)
         
         setting_string = ""
-        
         for config in server_config:
             setting_string += f"**{config}**: {server_config[config]}\n"
         
