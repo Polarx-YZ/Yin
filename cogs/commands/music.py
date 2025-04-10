@@ -55,7 +55,7 @@ class Music(commands.Cog):
             await vc.play(vc.queue.get())
     
     # Plays a song
-    @commands.command(aliases=["add_song"])
+    @commands.command(aliases=["add_song"], brief="Play a song", description="Adds a song to queue. Typing \"Cosmoto\" will play a random Cosmoto cover.", usage="`search`")
     async def play(self, ctx: commands.Context, *, search: str):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -102,7 +102,7 @@ class Music(commands.Cog):
         
         # If the queue is NOT empty and is paused/stopped then resume playing the queue
 
-    @commands.command()
+    @commands.command(brief="Stop the song")
     async def stop(self, ctx):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -114,7 +114,7 @@ class Music(commands.Cog):
         # Stop playing the song and keep all songs in the queue
         
 
-    @commands.command()
+    @commands.command(brief="Show song queue")
     async def queue(self, ctx):
         
         if ctx.voice_client is not None:
@@ -141,7 +141,7 @@ class Music(commands.Cog):
         
         # Send this in an embed please
 
-    @commands.command()
+    @commands.command(brief="Join current voice channel")
     async def join(self, ctx):
         if (ctx.author.voice):
             channel = ctx.author.voice.channel
@@ -151,7 +151,7 @@ class Music(commands.Cog):
             await ctx.reply("You are not in a voice channel!")
 
 
-    @commands.command()
+    @commands.command(brief="Leave the voice channel")
     async def leave(self, ctx):
         if ctx.voice_client != None:
             await ctx.voice_client.disconnect()
@@ -159,7 +159,7 @@ class Music(commands.Cog):
         else:
             await ctx.reply("I'm not in a voice channel!")
         
-    @commands.command()
+    @commands.command(brief="Skip current song")
     async def skip(self, ctx):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -173,12 +173,12 @@ class Music(commands.Cog):
         
         # If no song is playing then let the invoker know
         
-    @commands.command()
+    @commands.command(brief="Clear song queue")
     async def clear(self, ctx):
         await ctx.reply("Command not yet implemented")
         
         # Clear the queue
-    @commands.command()
+    @commands.command(brief="Change volume")
     async def volume(self, ctx, percent: int, opt=""):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -198,7 +198,7 @@ class Music(commands.Cog):
         await vc.set_volume(percent)
         await ctx.reply(msg_str.format(percent))
 
-    @commands.command()
+    @commands.command(brief="Go to a different part of the current song")
     async def seek(self, ctx, option: str=None, seconds: int=None):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -239,7 +239,7 @@ class Music(commands.Cog):
         await vc.seek(new_pos)
         await ctx.reply(message)
     
-    @commands.command()
+    @commands.command(brief="Pause the current song")
     async def pause(self, ctx):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -254,7 +254,7 @@ class Music(commands.Cog):
         await vc.pause(True)
         await ctx.reply("Paused the queue!")
     
-    @commands.command()
+    @commands.command(brief="Unpause the current song")
     async def unpause(self, ctx):
         if ctx.author.voice is None:
             return await ctx.reply("You are not in a voice channel!")
@@ -269,7 +269,7 @@ class Music(commands.Cog):
         await vc.pause(False)
         await ctx.reply("Unpaused the queue!")
     
-    @commands.command()
+    @commands.command(brief="Get info about the current song")
     async def songinfo(self, ctx):
         vc: wavelink.Player = ctx.voice_client
     

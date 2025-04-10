@@ -8,7 +8,7 @@
     "support_server": "https://discord.gg/xHB5XUMhbu",
     "testID": 930661077237264404,
     "support_server_ID": 1356024606972055767,
-    "guild": {
+    "system_messages": {
         "welcome_message": false,
         "welcome_channel": 1356107677528358952,
         "departure_message": false,
@@ -20,6 +20,10 @@
     },
     "email": {
         "sender_email": "pythonsmtpdeveloper@gmail.com",
-        "reciever_emails": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
+        "reciever_email": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
+    },
+    "tracking": {
+        "enabled": true,
+        "role_name": "Tracking"
     }
 }

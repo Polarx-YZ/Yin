@@ -7,7 +7,7 @@ class Quote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command()
+    @commands.command(brief="Get a random quote")
     async def quote(self, ctx):
         quotes = settings.quotes
         

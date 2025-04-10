@@ -13,7 +13,7 @@ class General(commands.Cog):
     # async def on_ready(self):
     #     self.start_time = time()
     
-    @commands.command()
+    @commands.command(brief="Check bot latency", description="States bot latency in miliseconds")
     async def ping(self, ctx):
         await ctx.reply(f"Pong! `{round(self.bot.latency * 1000) }ms`")
 
@@ -22,15 +22,20 @@ class General(commands.Cog):
         sorted_commands = sorted(list(self.bot.commands), key=lambda x: x.name)
 
         text = "```"
-        for command in sorted_commands:
-            text += f"{command.name}\n"
+        for command in [x for x in sorted_commands if not x.hidden]:
+            if command.brief:
+                brief = f"- {command.brief}"
+            else:
+                brief = ""
+                
+            text += f"| {command.name} {brief}\n"
         text += "```"
-        text += f"\n`Total: {len(self.bot.commands)}`"
+        text += f"\n`Total: {len([x for x in self.bot.commands if not x.hidden])}`"
         await ctx.reply(text)
 
-    @commands.command()
+    @commands.command(brief="Get information about the bot", description="States the total commands the bot currently has, the number of servers the bot's in, and the amount of members in the servers it's in")
     async def botinfo(self, ctx):
-        total_commands = len(self.bot.commands)
+        total_commands = len([x for x in self.bot.commands if not x.hidden])
         total_servers = len(self.bot.guilds)
         total_members = 0
         uptime = str(datetime.timedelta(seconds=int(round(time()-self.start_time))))
@@ -53,7 +58,7 @@ class General(commands.Cog):
         
         await ctx.reply(embed=embed)
 
-    @commands.command(aliases=["about", "whois", "profile"])
+    @commands.command(aliases=["about", "whois", "profile"], brief="Get info about someone", description="States details about a member's account", usage="`member`")
     async def memberinfo(self, ctx, member: discord.Member=None):
         if member == None:
             member = ctx.author

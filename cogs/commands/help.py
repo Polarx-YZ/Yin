@@ -7,7 +7,7 @@ class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="Get help!", description="Get help for commands", usage=f"{config.get("prefix")}help `[Optional: command]`")
+    @commands.command(brief="Get help!", description="Get help for commands", usage=f"`[Optional: command]`")
     async def help(self, ctx, arg=None):
 
         if arg != None:
@@ -15,7 +15,7 @@ class Help(commands.Cog):
             if command != None:
                 embed = discord.Embed(
                     title=f"Help | {command.name}",
-                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {self.bot.command_prefix}{command.usage}\n\nAliases: `{"`, `".join(command.aliases)}`"
+                    description=f"{command.brief}\n\nDescription: {command.description}\n\nUsage: {self.bot.command_prefix}{command.name} {command.usage}\n\nAliases: `{"`, `".join(command.aliases)}`"
                 )
                 return await ctx.reply(embed=embed)
             return await ctx.reply(f"`{arg}` is not a valid command!")
