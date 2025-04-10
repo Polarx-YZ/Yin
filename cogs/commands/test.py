@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import settings
 
 class Test(commands.Cog):
     def __init__(self, bot):
@@ -18,27 +19,27 @@ class Test(commands.Cog):
             return True
         return False
     
-    @commands.command()
+    @commands.command(hidden=True)
     async def sim_join(self, ctx):
         if self.authorized_user(ctx.author.id):
             await ctx.reply("Join dispatched")
             await self.bot.dispatch("member_join", ctx.message.author)
         
-    @commands.command()
+    @commands.command(hidden=True)
     async def sim_leave(self, ctx):
         if self.authorized_user(ctx.author.id):
             await ctx.reply("Leave dispatched")
             await self.bot.dispatch("member_remove", ctx.message.author)
         
-    @commands.command()
+    @commands.command(hidden=True)
     async def sim_error(self, ctx):
         if self.authorized_user(ctx.author.id):
             await ctx.reply()
     
-    @commands.command()
+    @commands.command(hidden=True)
     async def echo(self, ctx, *args):
         if self.authorized_user(ctx.author.id):
             await ctx.reply(" ".join(args))
-        
+    
 async def setup(bot):
     await bot.add_cog(Test(bot))
