@@ -28,7 +28,7 @@ class SendMail(commands.Cog):
 
     # Define the sendmail command
     # This command accepts arguments and sends an email with the provided message
-    @commands.command()
+    @commands.command(Brief="Send an email to the devs")
     async def sendmail(self, ctx, *, message: str):
 
         await ctx.reply("`Sending email...`")

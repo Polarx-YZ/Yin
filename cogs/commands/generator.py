@@ -16,7 +16,7 @@ class Generator(commands.Cog):
                 letters.append(letter)
         return letters
 
-    @commands.command(brief="Talk like LOR3!", description="Talk like LOR3 from the Gaming Tavern!")
+    @commands.command(brief="Talk like LOR3!", description="Talk like LOR3 from the Gaming Tavern!", usage="`message`")
     async def lore(self, ctx, *args):
         if len(args) <= 0:
             return await ctx.reply("Please supply a message to generate!")
@@ -37,7 +37,7 @@ class Generator(commands.Cog):
 
         await ctx.reply(message)
 
-    @commands.command(aliases=["meow", "nyan"], brief="Talk like a cat!", description="Meow meow meow! Talk like a cat!")
+    @commands.command(aliases=["meow", "nyan"], brief="Talk like a cat!", description="Meow meow meow! Talk like a cat!", usage="`message`")
     async def cat(self, ctx, *args):
         if len(args) <= 0:
             return await ctx.reply("Please supply a message to generate nya!")
@@ -58,7 +58,7 @@ class Generator(commands.Cog):
 
         await ctx.reply(message)
 
-    @commands.command(aliases=["woof", "wan", "bark"], brief="Talk like a dog!", description="Woof woof woof!! Talk like a dog!")
+    @commands.command(aliases=["woof", "wan", "bark"], brief="Talk like a dog!", description="Woof woof woof!! Talk like a dog!", usage="`message`")
     async def dog(self, ctx, *args):
         if len(args) <= 0:
             return await ctx.reply("Please supply a message to generate woof!")
@@ -91,7 +91,7 @@ class Generator(commands.Cog):
 
         return message
         
-    @commands.command(alises=["uwu", "owo"], brief="Uwuify a message!")
+    @commands.command(alises=["uwu", "owo"], brief="Uwuify a message!", usage="`message`")
     async def owo(self, ctx, args=[]):
         if ctx.message.reference is not None:
             message_id = ctx.message.reference.message_id

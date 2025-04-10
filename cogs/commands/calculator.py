@@ -62,12 +62,12 @@ class Calculator(commands.Cog):
 
         await ctx.reply(dividends + " = " + str(round(quot, 2)))
         
-    @commands.command()
+    @commands.command(brief="Round a number")
     async def round(self, ctx, num: float, place: int=1):
         await ctx.reply(str(round(num, place)))
     
     
-    @commands.command()
+    @commands.command(hidden=True)
     async def calculate(self, ctx):
         pass
     
