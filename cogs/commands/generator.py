@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import re
-
+import random
 
 
 class Generator(commands.Cog):
@@ -37,7 +37,7 @@ class Generator(commands.Cog):
 
         await ctx.reply(message)
 
-    @commands.command(aliases=["meow", "nyan"], brief="Meow meow meow!", description="Talk like a cat!")
+    @commands.command(aliases=["meow", "nyan"], brief="Talk like a cat!", description="Meow meow meow! Talk like a cat!")
     async def cat(self, ctx, *args):
         if len(args) <= 0:
             return await ctx.reply("Please supply a message to generate nya!")
@@ -58,7 +58,7 @@ class Generator(commands.Cog):
 
         await ctx.reply(message)
 
-    @commands.command(aliases=["woof", "wan", "bark"], brief="Woof woof woof!!", description="Talk like a dog!")
+    @commands.command(aliases=["woof", "wan", "bark"], brief="Talk like a dog!", description="Woof woof woof!! Talk like a dog!")
     async def dog(self, ctx, *args):
         if len(args) <= 0:
             return await ctx.reply("Please supply a message to generate woof!")
@@ -79,6 +79,46 @@ class Generator(commands.Cog):
 
         await ctx.reply(message)
 
+    async def owoify(self, message):
+        message = re.sub(r"(?is)no", "nyo", message)
+        message = re.sub(r"(?is)lit", "wit", message)
+        message = re.sub(r"(?is)!", "!!!", message)
+        message = re.sub(r"(?is)r", "w", message)
 
+        faces = ["uwu", "owo", ">w<", ">///<", "ovo", "uvu", ";w;", "TwT", ":3", ":P", ":c", "OWO", "UWU", ">W<"]
+        
+        message += " " + random.choice(faces)
+
+        return message
+        
+    @commands.command(alises=["uwu", "owo"], brief="Uwuify a message!")
+    async def owo(self, ctx, args=[]):
+        if ctx.message.reference is not None:
+            message_id = ctx.message.reference.message_id
+            msg = await ctx.fetch_message(message_id)
+            author = msg.author
+            sentence = msg.content
+     
+        elif len(args) > 0:
+            sentence = " ".join(args)
+            author = ctx.author
+        
+        else:
+            messages = [message async for message in ctx.channel.history(limit=5)]
+            
+            # Get the latest message that is not a bot
+            for msg in messages[1:]:
+                if not msg.author.bot:
+                    last_message = await ctx.fetch_message(msg.id)
+                    break
+            
+            sentence = last_message.content
+            author = last_message.author
+            
+        embed = discord.Embed()
+        embed.set_author(name=author)
+        embed.description = await self.owoify(sentence)
+        await ctx.reply(embed=embed)
+        
 async def setup(bot):
     await bot.add_cog(Generator(bot))
