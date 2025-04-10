@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from settings import config
 import random
 
 class Narration(commands.Cog):
@@ -9,7 +8,9 @@ class Narration(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, ctx):
-        if ctx.author.bot or config["auto_responses"]["narration"] == False:
+        config = await self.bot.config.find(ctx.guild.id)
+        
+        if ctx.author.bot or config["autoresponse_narration"] == False:
             return
 
         user = ctx.author

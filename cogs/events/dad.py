@@ -1,7 +1,5 @@
 import discord
 from discord.ext import commands
-from settings import config
-
 
 class Message(commands.Cog):
     def __init__(self, bot):
@@ -9,7 +7,9 @@ class Message(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, ctx):
-        if ctx.author.bot or config["auto_responses"]["dad"] == False:
+        config = await self.bot.config.find(ctx.guild.id)
+        
+        if ctx.author.bot or config["autoresponse_dad"] == False:
             return
 
         user = ctx.author

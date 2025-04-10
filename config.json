@@ -14,10 +14,6 @@
         "departure_message": false,
         "departure_channel": 1356107696633417758
     },
-    "auto_responses": {
-        "dad": true,
-        "narration": true
-    },
     "email": {
         "sender_email": "pythonsmtpdeveloper@gmail.com",
         "reciever_email": ["polarkun761@gmail.com", "notpolarpup@gmail.com"]
