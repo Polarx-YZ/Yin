@@ -22,6 +22,9 @@ class ErrorHandling(commands.Cog):
             embed.title = f"The command `{command}` doesn't exist!"
             embed.description=f"To get a list of commands use `{self.bot.command_prefix}commands`\n\nIf you need help join the [Support Server](https://discord.gg/xHB5XUMhbu)!"
             
+        if isinstance(error, commands.MissingPermissions):
+            embed.title = "You are missing permissions!"
+            embed.description = f"Error: `{error}`\n\nIf you need help join the [Support Server](https://discord.gg/xHB5XUMhbu)!"
 
         if ctx.guild.id == config.get("support_server_ID"):
             if ping:
