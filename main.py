@@ -7,14 +7,27 @@ import settings
 settings.init()
 load_dotenv()
 
+import pymongo
+import motor.motor_asyncio
+from utils.mongo import Document
+
+
+async def get_prefix(self, ctx):
+    
+    try:
+        data = await client.config.find(ctx.guild.id)
+        
+        if not data or "prefix" not in data:
+            return commands.when_mentioned_or(".")(self, ctx)
+        return commands.when_mentioned_or(data['prefix'])(self, ctx)
+    except:
+        return commands.when_mentioned_or(".")(self, ctx)
+
 intents = discord.Intents.all()
 
-client = commands.Bot(command_prefix=settings.config.get(
-    "prefix"), intents=intents, help_command=None)
+client = commands.Bot(command_prefix=get_prefix, intents=intents, help_command=None)
 
 # Load commmands and events
-
-
 async def load():
     for folder in os.listdir("./cogs"):
         for filename in os.listdir(f"./cogs/{folder}"):

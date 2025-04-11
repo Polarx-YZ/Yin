@@ -33,13 +33,13 @@ class MemberTracking(commands.Cog):
             # Check if the role exists in the guild
             tracked_role = discord.utils.get(after.guild.roles, name=role_name)
             if not tracked_role:
-                print(f"Role '{role_name}' does not exist in the server.")
+                #print(f"Role '{role_name}' does not exist in the server.")
                 return
 
             # Check if the member has the specified role
             role = discord.utils.get(after.roles, name=role_name)
             if not role:
-                print(f"{after.name} does not have the tracked role '{role_name}'.")
+                #print(f"{after.name} does not have the tracked role '{role_name}'.")
                 return  
             
             # Log the status change
@@ -48,7 +48,7 @@ class MemberTracking(commands.Cog):
             # Find the target channel
             channel = discord.utils.get(after.guild.text_channels, name="testing")
             if not channel:
-                print("Channel not found.")
+                #print("Channel not found.")
                 return
 
             embed = discord.Embed(
