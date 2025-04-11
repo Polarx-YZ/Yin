@@ -12,6 +12,8 @@ class ErrorHandling(commands.Cog):
         print(error)
         ping = False
         command = ctx.invoked_with
+        config = await self.bot.config.find(ctx.guild.id)
+        prefix = config["prefix"]
         
         embed = discord.Embed(
             title="There seems to have been an error!",
@@ -20,7 +22,7 @@ class ErrorHandling(commands.Cog):
 
         if isinstance(error, commands.CommandNotFound):
             embed.title = f"The command `{command}` doesn't exist!"
-            embed.description=f"To get a list of commands use `{self.bot.command_prefix}commands`\n\nIf you need help join the [Support Server](https://discord.gg/xHB5XUMhbu)!"
+            embed.description=f"To get a list of commands use `{prefix}commands`\n\nIf you need help join the [Support Server](https://discord.gg/xHB5XUMhbu)!"
             
         if isinstance(error, commands.MissingPermissions):
             embed.title = "You are missing permissions!"

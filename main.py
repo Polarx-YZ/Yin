@@ -7,11 +7,6 @@ import settings
 settings.init()
 load_dotenv()
 
-import pymongo
-import motor.motor_asyncio
-from utils.mongo import Document
-
-
 async def get_prefix(self, ctx):
     
     try:

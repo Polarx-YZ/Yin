@@ -15,7 +15,7 @@ class Ready(commands.Cog):
         
         # If the bot is the test bot
         if self.bot.user.id == config.get("testID"):
-            self.bot.command_prefix = config.get("test_prefix")
+            #self.bot.command_prefix = config.get("test_prefix")
             
             # Show bot status
             # TODO Later Yin Manager should be the one doing this
