@@ -9,6 +9,10 @@ class Message(commands.Cog):
     async def on_message(self, ctx):
         config = await self.bot.config.find(ctx.guild.id)
         
+        # if await self.bot.config.find({"autoresponse_dad": {"$exists": False}}):
+        #     print("No autoresponse_dad")
+        #     await self.bot.config.insert({"autoreponse_dad": True})
+        
         if ctx.author.bot or config["autoresponse_dad"] == False:
             return
 

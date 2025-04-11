@@ -27,20 +27,6 @@ intents = discord.Intents.all()
 
 client = commands.Bot(command_prefix=get_prefix, intents=intents, help_command=None)
 
-@client.event
-async def on_ready():
-    # Make MongoDB connection
-    client.connection_url = os.getenv("MONGO_ENTRY")
-    print("Connecting to Mongo")
-    client.mongo = motor.motor_asyncio.AsyncIOMotorClient(str(client.connection_url))
-    client.db = client.mongo['Yin-DB']
-    client.config = Document(client.db, 'config')
-    
-    if client.user.id == settings.config.get("testID"):
-        client.config = Document(client.db, 'test_config')
-        
-    print("Mongo connected")
-
 # Load commmands and events
 async def load():
     for folder in os.listdir("./cogs"):

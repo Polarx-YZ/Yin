@@ -22,20 +22,26 @@ class Test(commands.Cog):
     @commands.command(hidden=True)
     async def sim_join(self, ctx):
         if self.authorized_user(ctx.author.id):
-            await ctx.reply("Join dispatched")
             await self.bot.dispatch("member_join", ctx.message.author)
+            await ctx.reply("Join dispatched")
         
     @commands.command(hidden=True)
     async def sim_leave(self, ctx):
         if self.authorized_user(ctx.author.id):
-            await ctx.reply("Leave dispatched")
             await self.bot.dispatch("member_remove", ctx.message.author)
+            await ctx.reply("Leave dispatched")
         
     @commands.command(hidden=True)
     async def sim_error(self, ctx):
         if self.authorized_user(ctx.author.id):
             await ctx.reply()
-    
+            
+    @commands.command(hidden=True)
+    async def sim_guild_join(self, ctx):
+        if self.authorized_user(ctx.author.id):
+            self.bot.dispatch("guild_join", ctx)
+            await ctx.reply("Guild join dispatched")
+            
     @commands.command(hidden=True)
     async def echo(self, ctx, *args):
         if self.authorized_user(ctx.author.id):
