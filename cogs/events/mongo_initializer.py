@@ -16,6 +16,8 @@ class Initializer(commands.Cog):
         await self.bot.config.insert({
                     "_id": guild.id, 
                     "prefix": ".",
+                    "autoresponse_dad": False,
+                    "autoresponse_narration": False
                 })
         
     # Make sure all guilds have all the configs
@@ -39,11 +41,27 @@ class Initializer(commands.Cog):
         
         # Sets up 
         for guild in self.bot.guilds:
-            await self.initialize(guild)
+            if await self.bot.config.find(guild.id) is None:
+                await self.initialize(guild)
+        
+        # Params to set default values for config
+        fields = [
+            {
+                "name": "autoresponse_dad", 
+                "value": False
+            }, 
+            {
+                "name": "autoresponse_narration",
+                "value": False
+            }
+        ]
+        
+        for param in fields:
+            name = param["name"]
+            value = param["value"]
             
-        await collection.update_many({"autoresponse_dad": {"$exists": False}},{"$set": {"autoresponse_dad": True}})
-        await collection.update_many({"autoresponse_narration": {"$exists": False}},{"$set": {"autoresponse_narration": True}})
-        print("Set missing fields")
+            await collection.update_many({name: {"$exists": False}},{"$set": {name: value}})
+            print(f"Set {name} to {value}")
 
             
     
