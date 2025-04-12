@@ -9,8 +9,8 @@ class Help(commands.Cog):
 
     @commands.command(brief="Get help!", description="Get help for commands", usage=f"`[Optional: command]`")
     async def help(self, ctx, arg=None):
-        config = await self.bot.config.find(ctx.guild.id)
-        prefix = config["prefix"]
+        db_config = await self.bot.config.find(ctx.guild.id)
+        prefix = db_config["prefix"]
         
         if arg != None:
             command = self.bot.get_command(arg)
