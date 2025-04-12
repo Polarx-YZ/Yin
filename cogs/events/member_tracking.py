@@ -43,7 +43,7 @@ class MemberTracking(commands.Cog):
                 return  
             
             # Log the status change
-            print(f"{after.name} with role '{role_name}' changed status from {before.status} to {after.status}")
+            #print(f"{after.name} with role '{role_name}' changed status from {before.status} to {after.status}")
 
             # Find the target channel
             channel = discord.utils.get(after.guild.text_channels, name="testing")

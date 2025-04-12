@@ -63,7 +63,7 @@ class Initializer(commands.Cog):
             await collection.update_many({name: {"$exists": False}},{"$set": {name: value}})
             print(f"Set {name} to {value}")
 
-            
+        print("Mongodb initialized!")
     
     # Set default values for config
     @commands.Cog.listener()
