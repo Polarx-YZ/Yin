@@ -15,9 +15,12 @@ class Suggestion(commands.Cog):
     @commands.cooldown(1, 60, commands.BucketType.user)
     @commands.command()
     async def suggest(self, ctx, *args):
+        server_config = await self.bot.config.find(ctx.guild.id)
+        prefix = server_config["prefix"]
+        
         author = ctx.author
         guild_name = ctx.guild.name
-        suggestion_channel_id = 1360389313908707529
+        suggestion_channel_id = 1360389313908707529 # 1360389313908707529
         suggestion_channel = self.bot.get_channel(suggestion_channel_id)
         
         embed = discord.Embed(
@@ -26,6 +29,7 @@ class Suggestion(commands.Cog):
         )
         
         embed.set_author(name=f"{author} from {guild_name}", icon_url=ctx.author.avatar.url)
+        embed.set_footer(text=f"Make your own suggestion using {prefix}suggest!")
         
         suggestion_message = await suggestion_channel.send(embed=embed)
 
