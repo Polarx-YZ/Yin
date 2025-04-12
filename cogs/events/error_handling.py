@@ -28,6 +28,10 @@ class ErrorHandling(commands.Cog):
             embed.title = "You are missing permissions!"
             embed.description = f"Error: `{error}`\n\nIf you need help join the [Support Server](https://discord.gg/xHB5XUMhbu)!"
 
+        if isinstance(error, commands.CommandOnCooldown):
+            embed.title = "Command under cooldown!"
+            embed.description = str(error)
+        
         if ctx.guild.id == config.get("support_server_ID"):
             if ping:
                 await ctx.reply(content="<@&1356024937365770370>", embed=embed)
