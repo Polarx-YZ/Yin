@@ -120,10 +120,13 @@ class Music(commands.Cog):
         if ctx.voice_client is not None:
             vc = wavelink.Player = ctx.voice_client
         else:
-            return await ctx.reply("Nothing is playing!")
+            return await ctx.reply("There are no songs in queue!")
         
         queue = vc.queue
         current_track = vc.current
+        
+        if current_track is None:
+            return await ctx.reply("There are no songs in queue!")
         
         queue_list = ""
         
