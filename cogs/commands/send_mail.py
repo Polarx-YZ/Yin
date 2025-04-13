@@ -73,6 +73,9 @@ class SendMail(commands.Cog):
             server.sendmail(sender_email, reciever_email, message.as_string())
             
 
+
+            
+
 # Define the setup function
 # This function is called when the cog is loaded
 async def setup(bot):
