@@ -22,14 +22,6 @@ class Pokedex(commands.Cog):
         
         pokemon = pb.pokemon(query)
         
-        '''
-        try:
-            pokemon.id
-        except:
-            tell the user something
-            dont run the rest of the code
-        '''
-        
         try:
             id = pokemon.id
         except:
