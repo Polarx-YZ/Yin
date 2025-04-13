@@ -36,7 +36,7 @@ class Initializer(commands.Cog):
             collection_name = 'test_config'
             
         print("Mongo connected")
-          
+        
         collection = self.bot.db[collection_name]
         
         # Sets up 
