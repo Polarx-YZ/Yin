@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-
+import random
 class Message(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -28,8 +28,20 @@ class Message(commands.Cog):
                         return await ctx.reply(f"Hi {" ".join(words_after)}! I'm Dad!")
                     
         # Respond to 'shouting'
-        if ctx.content.isupper():
-            return await ctx.reply(f"Hey {user.mention}, no yelling!")
+        if ctx.content.isupper() and len(ctx.content) > 1:
+
+            shouts_options = [
+                "Hey {0}, no yelling!",
+                "HEY {0}, THIS IS A LIBRARY!",
+                "Shut up {0}.",
+                "Jesus christ {0} you scared me!",
+                F"> {self.alternate_case(ctx.content)}\n# SHUT UP",
+                "Hey {0}, do you know how stupid you sound right now?",
+                "{0}, you're so annoying.",
+                "{0}, pipe down!",
+                "{0}, YOU'RE GROUNDED FOR YELLING!"
+            ]
+            return await ctx.reply(random.choice(shouts_options).format(user.mention))
         
         #! OLD CODE DOESN'T WORK AND IT'S WAY TOO COMPLICATED LOL - @Polarx-YZ
         # dad_trigger = next((trigger for trigger in dad_triggers if any(x in trigger for x in ctx.content.split())), None)
@@ -45,7 +57,23 @@ class Message(commands.Cog):
         #     # if key == "":
         #     #     return
         #     # await ctx.reply(f"Hi{after}! I'm Dad")
+        
+    def alternate_case(self, message):
 
+        words = message.split(" ")
+        new_message = ""
+        
+        for word in words:
+            chars = list(word)
+            new_word = ""
+            for i, char in enumerate(chars):
+                if i % 2 == 0:
+                    new_word += char.upper()
+                else:
+                    new_word += char.lower()
+            new_message += new_word + " "
 
+        return new_message
+    
 async def setup(bot):
     await bot.add_cog(Message(bot))
