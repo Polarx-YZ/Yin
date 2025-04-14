@@ -18,12 +18,14 @@ class ImageGeneration(commands.Cog):
         
         #slap_template = slap_template.resize((405 * 2, 612 * 2))
         
+        # Place the invoker's pfp
         pfp = pfp.resize((150, 150))
         mask = Image.new('L', pfp.size, 255)
         pfp = pfp.rotate(15, expand=True)
         mask = mask.rotate(15, expand=True)
         slap_template.paste(pfp, (-15, 65), mask)
         
+        # Place the victim's pfp
         pfp2 = pfp2.resize((220, 220))
         mask = Image.new('L', pfp2.size, 255)
         pfp2 = pfp2.rotate(-35, expand=1)
@@ -42,7 +44,7 @@ class ImageGeneration(commands.Cog):
             file = discord.File(fp=image_binary, filename="file.png")
             
             embed.set_image(url="attachment://file.png")
-            await ctx.send(file=file, embed=embed)
+            await ctx.reply(file=file, embed=embed)
     
     async def open_pfp(self, asset):
         data = BytesIO(requests.get(asset).content)
