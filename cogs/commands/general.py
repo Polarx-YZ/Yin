@@ -48,7 +48,7 @@ class General(commands.Cog):
 
         embed = discord.Embed(
             title=f"- Bot Info -",
-            description=f"Info for {config.get("bot_name")}"
+            description=f"Info for {config.get("bot_name")}\n\n **Version**: {config.get("version")}\n\n"
         )
         embed.add_field(name="Total Commands", value=total_commands)
         embed.add_field(name="Total Servers", value=total_servers)
