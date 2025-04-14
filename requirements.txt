@@ -6,3 +6,4 @@ PyNaCl
 motor
 pymongo
 pokebase
+pillow
