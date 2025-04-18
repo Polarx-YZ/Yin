@@ -7,3 +7,4 @@ motor
 pymongo
 pokebase
 pillow
+easy-pil
