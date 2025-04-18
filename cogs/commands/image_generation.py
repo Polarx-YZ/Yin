@@ -2,8 +2,6 @@ import discord
 from discord.ext import commands
 
 from easy_pil import Editor, load_image_async
-from io import BytesIO
-import requests
 
 class ImageGeneration(commands.Cog):
     def __init__(self, bot):
@@ -29,7 +27,7 @@ class ImageGeneration(commands.Cog):
         
         # Place the victim's pfp
         pfp2 = pfp2.resize((220, 220))
-        pfp2 = pfp2.rotate(-35, expand=1)
+        pfp2 = pfp2.rotate(-35, expand=True)
         editor.paste(pfp2, (350, 10))
 
         embed = discord.Embed(
